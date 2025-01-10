@@ -3,40 +3,40 @@ using UnityEngine;
 
 public class Health
 {
-    private float _minHealth;
-    private float _maxHealth;
-    private float _health;
+    private float _minValue;
+    private float _maxValue;
+    private float _value;
 
     public Health(float maxHealth)
     {
-        _minHealth = 0;
-        _maxHealth = maxHealth;
-        _health = _maxHealth;
+        _minValue = 0;
+        _maxValue = maxHealth;
+        _value = _maxValue;
 
         Validate();
     }
 
-    public float CurrentHealth => _health;
+    public float CurrentHealth => _value;
 
     public void AddHealth(int heal)
     {
-        _health += heal;
+        _value += heal;
         Validate();
     }
 
     public void RemoveHealth(int damage)
     {
-        _health -= damage;
+        _value -= damage;
         Validate();
     }
 
     private void Validate()
     {
-        _health = Mathf.Clamp(_health, _minHealth, _maxHealth);
+        _value = Mathf.Clamp(_value, _minValue, _maxValue);
 
-        if (_minHealth >= _maxHealth)
+        if (_minValue >= _maxValue)
         {
-            _minHealth = _maxHealth - 1;
+            _minValue = _maxValue - 1;
         }
     }
 }

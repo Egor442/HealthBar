@@ -1,31 +1,7 @@
-using UnityEngine;
-using UnityEngine.UI;
-
-[RequireComponent(typeof(Button))]
-public class HealButton : MonoBehaviour
+public class HealButton : OrdinaryButton
 {
-    [SerializeField] private Player _player;
-    [SerializeField] private int _healPoint;
-
-    private Button _button;
-
-    private void Awake()
+    protected override void OnClickButton()
     {
-        _button = GetComponent<Button>();
-    }
-
-    private void OnEnable()
-    {
-        _button.onClick.AddListener(OnClickButton);
-    }
-
-    private void OnDisable()
-    {
-        _button.onClick.RemoveListener(OnClickButton);
-    }
-
-    private void OnClickButton()
-    {
-        _player.Heal(_healPoint);
+        _player.Heal(_value);
     }
 }
