@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SmoothSlider : OrdinarySlider
+public class SmoothSliderBar : OrdinarySliderBar
 {
     [SerializeField] private float _fillSpeed;
 
@@ -12,6 +12,6 @@ public class SmoothSlider : OrdinarySlider
     private void Slide()
     {
         _slider.value = Mathf.MoveTowards(_slider.value, _targetValue, _fillSpeed * Time.deltaTime);
-        SetText();
+        SetText((int)_slider.value, (int)_slider.maxValue);
     }
 }

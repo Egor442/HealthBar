@@ -3,10 +3,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Slider))]
-public class OrdinarySlider : MonoBehaviour
+public class OrdinarySliderBar : TextBar
 {
     [SerializeField] private Player _player;
-    [SerializeField] private TMP_Text _healthBarText;
 
     protected Slider _slider;
     protected float _targetValue;
@@ -29,10 +28,6 @@ public class OrdinarySlider : MonoBehaviour
     private void SetTargetValue(float value)
     {
         _targetValue = value;
-    }
-
-    protected void SetText()
-    {
-        _healthBarText.text = $"{(int)_slider.value}/{(int)_slider.maxValue}";
+        SetText((int)_slider.value, (int)_slider.maxValue);
     }
 }

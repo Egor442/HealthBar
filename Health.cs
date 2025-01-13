@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Health
@@ -7,24 +6,24 @@ public class Health
     private float _maxValue;
     private float _value;
 
-    public Health(float maxHealth)
+    public Health(float maxValue)
     {
         _minValue = 0;
-        _maxValue = maxHealth;
+        _maxValue = maxValue;
         _value = _maxValue;
 
         Validate();
     }
 
-    public float CurrentHealth => _value;
+    public float CurrentValue => _value;
 
-    public void AddHealth(int heal)
+    public void AddValue(int heal)
     {
         _value += heal;
         Validate();
     }
 
-    public void RemoveHealth(int damage)
+    public void RemoveValue(int damage)
     {
         _value -= damage;
         Validate();

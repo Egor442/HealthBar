@@ -16,18 +16,18 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        HealthChanged?.Invoke(_healthHandler.CurrentHealth);
+        HealthChanged?.Invoke(_healthHandler.CurrentValue);
     }
 
     public void Heal(int health)
     {
-        _healthHandler.AddHealth(health);
-        HealthChanged?.Invoke(_healthHandler.CurrentHealth);
+        _healthHandler.AddValue(health);
+        HealthChanged?.Invoke(_healthHandler.CurrentValue);
     }
 
     public void TakeDamage(int damage)
     {
-        _healthHandler.RemoveHealth(damage);
-        HealthChanged?.Invoke(_healthHandler.CurrentHealth);
+        _healthHandler.RemoveValue(damage);
+        HealthChanged?.Invoke(_healthHandler.CurrentValue);
     }   
 }
