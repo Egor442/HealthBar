@@ -1,33 +1,28 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Slider))]
-public class OrdinarySliderBar : TextBar
+public class OrdinarySliderBar : HealthBar
 {
-    [SerializeField] private Player _player;
-
     protected Slider _slider;
-    protected float _targetValue;
 
     private void Awake()
     {
         _slider = GetComponent<Slider>();
     }
 
-    private void OnEnable()
+    private void Update()
     {
-        _player.HealthChanged += SetTargetValue;
+        Slide();
     }
 
-    private void OnDisable()
+    protected override void SetTargetValue(float value)
     {
-        _player.HealthChanged -= SetTargetValue;
+        base.SetTargetValue(value);
     }
 
-    private void SetTargetValue(float value)
+    protected virtual void Slide()
     {
-        _targetValue = value;
-        SetText((int)_slider.value, (int)_slider.maxValue);
+        _slider.value = _targetValue;
     }
 }
