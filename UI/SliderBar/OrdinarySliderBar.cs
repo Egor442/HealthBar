@@ -13,12 +13,13 @@ public class OrdinarySliderBar : HealthBar
 
     private void Update()
     {
+        SetTargetValue();
         Slide();
     }
 
-    protected override void SetTargetValue(float value)
+    protected override void SetTargetValue()
     {
-        base.SetTargetValue(value);
+        base.SetTargetValue();
     }
 
     protected virtual void Slide()

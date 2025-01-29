@@ -1,37 +1,37 @@
+using System;
 using UnityEngine;
 
 public class Health
 {
     private float _minValue;
     private float _maxValue;
-    private float _value;
 
     public Health(float maxValue)
     {
         _minValue = 0;
         _maxValue = maxValue;
-        _value = _maxValue;
+        Value = _maxValue;
 
         Validate();
     }
 
-    public float CurrentValue => _value;
+    public float Value { get; private set; }
 
     public void AddValue(int heal)
-    {
-        _value += heal;
+    {      
+        Value += heal;
         Validate();
     }
 
     public void RemoveValue(int damage)
     {
-        _value -= damage;
+        Value -= damage;
         Validate();
     }
 
     private void Validate()
     {
-        _value = Mathf.Clamp(_value, _minValue, _maxValue);
+        Value = Mathf.Clamp(Value, _minValue, _maxValue);
 
         if (_minValue >= _maxValue)
         {

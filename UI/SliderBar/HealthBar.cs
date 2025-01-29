@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 
 public class HealthBar : MonoBehaviour
@@ -7,18 +6,8 @@ public class HealthBar : MonoBehaviour
 
     protected float _targetValue;
 
-    private void OnEnable()
+    protected virtual void SetTargetValue()
     {
-        _player.HealthChanged += SetTargetValue;
-    }
-
-    private void OnDisable()
-    {
-        _player.HealthChanged -= SetTargetValue;
-    }
-
-    protected virtual void SetTargetValue(float value)
-    {
-        _targetValue = value;
+        _targetValue = _player.Health.Value;
     }
 }

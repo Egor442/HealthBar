@@ -10,9 +10,9 @@ public class OrdinarySliderWithText : OrdinarySliderBar, IHealthBarWithText
         _healthBarText.text = $"{_slider.value}/{_slider.maxValue}";
     }
 
-    protected override void SetTargetValue(float value)
+    protected override void SetTargetValue()
     {
-        base.SetTargetValue(value);
+        base.SetTargetValue();
         SetText();
     }
 }

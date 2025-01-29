@@ -1,33 +1,24 @@
-using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] private float _maxHealth;
 
-    private Health _healthHandler;
-
-    public Action<float> HealthChanged;
+    public Health Health { get; private set; }
 
     private void Awake()
     {
-        _healthHandler = new Health(_maxHealth);
-    }
-
-    private void Start()
-    {
-        HealthChanged?.Invoke(_healthHandler.CurrentValue);
+        Health = new Health(_maxHealth);
     }
 
     public void Heal(int health)
     {
-        _healthHandler.AddValue(health);
-        HealthChanged?.Invoke(_healthHandler.CurrentValue);
+        Health.AddValue(health);
     }
 
     public void TakeDamage(int damage)
     {
-        _healthHandler.RemoveValue(damage);
-        HealthChanged?.Invoke(_healthHandler.CurrentValue);
-    }   
+        Health.RemoveValue(damage);
+    }
 }
